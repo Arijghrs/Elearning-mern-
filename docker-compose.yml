@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: node:20
+    container_name: frontend-app
+    working_dir: /src
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "5173:5173"
+    volumes:
+      - "./frontend:/src"
+      - "/src/node_modules" 
+    environment:
+      VITE_API_URL: "http://localhost:3000/api"
+
+  backend:
+    image: node:20
+    container_name: backend-app
+    working_dir: /app
+    command: sh -c "npm install && npm install -g nodemon && npm start"
+    ports:
+      - "3001:3000"
+    volumes:
+      - "./backend:/app"
+    environment:
+      MONGO: "mongodb://mongo:27017/bright-project"
+      JWT_SECRET: "gjfshlhdsgf35656vdfd3c16sjhf65fs7f"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data: {}

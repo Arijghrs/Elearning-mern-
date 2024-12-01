@@ -5,14 +5,14 @@ services:
     image: node:20
     container_name: frontend-app
     working_dir: /src
-    command: sh -c "npm install --legacy-peer-deps && npm run dev"
+    command: sh -c "npm install --legacy-peer-deps && npm run dev -- --host"
     ports:
       - "5173:5173"
     volumes:
       - "./frontend:/src"
-      - "/src/node_modules" 
+      - "/src/node_modules"
     environment:
-      VITE_API_URL: "http://localhost:3000/api"
+      VITE_API_URL: "http://backend:3000/api"
 
   backend:
     image: node:20
@@ -20,7 +20,7 @@ services:
     working_dir: /app
     command: sh -c "npm install && npm install -g nodemon && npm start"
     ports:
-      - "3001:3000"
+      - "3000:3000"
     volumes:
       - "./backend:/app"
     environment:

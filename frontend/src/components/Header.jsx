@@ -13,10 +13,6 @@ export default function Header() {
   // Check if the current path is the profile page
   const isProfilePage = location.pathname === '/profile';
 
-  console.log("Current Path:", location.pathname);
-  console.log("Is Profile Page:", isProfilePage);
-  console.log("Current User:", currentUser);
-
   return (
     <nav className="bg-[#F5F4FF] w-full">
       <div className="container mx-auto px-12 py-3 flex justify-between items-center">
@@ -29,7 +25,15 @@ export default function Header() {
           <li className="text-darkBlue text-[26px]">Mentors</li>
           {!isProfilePage && (
             <li className="px-2 -mt-2 text-darkBlue text-[26px] rounded-none relative">
-              <Popup buttonText={buttonText} buttonAction={buttonAction} />
+              {currentUser ? (
+                <img
+                  src={currentUser.avatar || 'https://via.placeholder.com/150'}
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full "
+                />
+              ) : (
+                <Popup buttonText={buttonText} buttonAction={buttonAction} />
+              )}
             </li>
           )}
         </ul>

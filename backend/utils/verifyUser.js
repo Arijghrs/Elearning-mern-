@@ -21,3 +21,12 @@ export const checkOwnerRole = (req, res, next) => {
     }
     next();
   };
+
+  export const verifyRole = (allowedRoles) => (req, res, next) => {
+    if (!allowedRoles.includes(req.user.role)) {
+        return next(errorHandler(403, 'Access denied: Insufficient permissions.'));
+    }
+    next();
+};
+
+

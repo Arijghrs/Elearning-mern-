@@ -59,6 +59,6 @@ app.use((err, req, res, next) => {
 app.listen(3000, () =>{
   connect();
   console.log('server is running ');
-  createOwner();
+  //createOwner();
   
 });

@@ -195,16 +195,28 @@ const SignIn = ({ showModal, onClose, openSignUp }) => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+  
       if (data.success === false) {
         dispatch(signInFailure(data.message));
         return;
       }
+  
+      // Assuming 'data' contains the user's role
       dispatch(signInSuccess(data));
-      navigate('/dashboard');
+  
+      // Navigate based on the role
+      if (data.role === 'mentor' || data.role === 'owner') {
+        navigate('/dashboard'); // Mentor or Owner navigates to the dashboard
+      } else if (data.role === 'user') {
+        navigate('/courses'); // User navigates to courses
+      } else {
+        console.error('Unknown role:', data.role);
+      }
     } catch (error) {
       dispatch(signInFailure(error.message));
     }
   };
+  
   return (
     <div className="fixed inset-0 flex items-center  justify-center z-50">
       <div className="fixed inset-0 bg-black opacity-50"></div>

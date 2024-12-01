@@ -26,6 +26,7 @@ import Checkout from './pages/Checkout';
 import Payment from './pages/Payment';
 import MentorCourse from './pages/MentorCourse';
 import HomeScreen from './pages/HomeScreen';
+import AddMentor from './pages/AddMentor.jsx';
 
 function App() {
   return (
@@ -54,12 +55,17 @@ function App() {
         }
       />
       
-
-
-
+     {/*student  */}
       <Route element={<PrivateRoute/>}>
 
-
+      <Route
+        path="/courses"
+        element={
+          <MainLayout>
+            <Courses />
+          </MainLayout>
+        }
+      />
       <Route
         path="/CourseDiscussion"
         element={
@@ -101,62 +107,8 @@ function App() {
             <Payment/>
           </MainLayout>
         }
-      />
+      />      
 
-       <Route path="/profile" element={
-          <MainLayout>
-            <Profile />
-          </MainLayout>
-        }
-       />      
-
-     <Route path="/dashboard" element={
-          <Layout>
-           <Dashboard/>
-          </Layout>
-        }
-      />
-      
-      <Route
-        path="/users"
-        element={
-          <Layout>
-            <Users />
-          </Layout>
-        }
-      />
-     <Route
-        path="/mentors"
-        element={
-          <Layout>
-            <Mentors/>
-          </Layout>
-        }
-      />
-      <Route
-        path="/coursesdash"
-        element={
-          <Layout>
-            <Coursesd/>
-          </Layout>
-        }
-      />
-      <Route
-        path="/certificates"
-        element={
-          <Layout>
-            <Certificates/>
-          </Layout>
-        }
-      />
-       <Route
-        path="/courses"
-        element={
-          <MainLayout>
-            <Courses />
-          </MainLayout>
-        }
-      />
    
        <Route
         path="/QuizStart"
@@ -206,9 +158,66 @@ function App() {
           </MainLayout>
         }
       />
+      {/*mentor and owner interfaces */}
+      <Route
+        path="/coursesdash"
+        element={
+          <Layout>
+            <Coursesd/>
+          </Layout>
+        }
+      />
+      <Route 
+        path="/addcourse" 
+        element={<AddCourse/>} 
+      />
       
-
-      <Route path="/addcourse" element={<AddCourse/>} />
+     <Route path="/dashboard" element={
+          <Layout>
+           <Dashboard/>
+          </Layout>
+        }
+      />
+      
+      <Route
+        path="/users"
+        element={
+          <Layout>
+            <Users />
+          </Layout>
+        }
+      />
+     <Route
+        path="/mentors"
+        element={
+          <Layout>
+            <Mentors/>
+          </Layout>
+        }
+      />
+      <Route
+        path="/addmentor"
+        element={
+            <AddMentor/>
+          
+        }
+      />
+     
+      <Route
+        path="/certificates"
+        element={
+          <Layout>
+            <Certificates/>
+          </Layout>
+        }
+      />
+       
+        <Route path="/profile" element={
+          <MainLayout>
+            <Profile />
+          </MainLayout>
+        }
+       />
 
       </Route>
 

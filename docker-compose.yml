@@ -5,14 +5,16 @@ services:
     image: node:20
     container_name: frontend-app
     working_dir: /src
-    command: sh -c "npm install --legacy-peer-deps && npm run dev -- --host"
+    command: sh -c "npm ci && npm run dev -- --host"
     ports:
       - "5173:5173"
     volumes:
-      - "./frontend:/src"
-      - "/src/node_modules"
+      - "./frontend:/src"  # Mount the source code
+      - "/src/node_modules" # Avoid overwriting node_modules
     environment:
-      VITE_API_URL: "http://backend:3000/api"
+      VITE_API_URL: "http://backend-app:3000/api"  # Use the backend service name instead of localhost
+    networks:
+      - app-network
 
   backend:
     image: node:20
@@ -23,11 +25,14 @@ services:
       - "3000:3000"
     volumes:
       - "./backend:/app"
+      - "/app/node_modules"
     environment:
       MONGO: "mongodb://mongo:27017/bright-project"
       JWT_SECRET: "gjfshlhdsgf35656vdfd3c16sjhf65fs7f"
     depends_on:
       - mongo
+    networks:
+      - app-network
 
   mongo:
     image: mongo:6.0
@@ -36,6 +41,12 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app-network
 
 volumes:
   mongo-data: {}
+
+networks:
+  app-network:
+    driver: bridge

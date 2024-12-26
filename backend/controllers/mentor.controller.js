@@ -1,5 +1,6 @@
 import User from "../models/User.model.js";
-import bcryptjs from 'bcryptjs';
+import bcryptjs from "bcryptjs";
+
 
 
 export const getMentors = async (req, res, next) => {
@@ -29,46 +30,26 @@ export const getMentors = async (req, res, next) => {
 
 
 
+export const addMentor = async (req, res, next) => {
+  try {
+    const mentorData = req.body;
 
-
-
-
-  /*export const createMentor = async () => {
-    try {
-      const hashedPassword = bcryptjs.hashSync('mentor', 10); 
-  
-      const mentorExists = await User.findOne({ email: 'mentor1@gmail.com' });
-      if (!mentorExists) {
-        const mentor = new User({
-          username: 'mentor1',
-          email: 'mentor1@gmail.com',
-          phone:'+556484516161',
-          password: hashedPassword,
-          role: 'mentor',
-        });
-        await mentor.save();
-        console.log('mentor created!');
-      } else {
-        console.log('mentor already exists.');
-  
-      }
-    } catch (error) {
-      console.error('Error creating mentor:', error);
+    
+    if (mentorData.password) {
+      mentorData.password = bcryptjs.hashSync(mentorData.password, 10);
     }
-  };*/
 
-  export const addMentor = async (req, res, next) => {
-    try {
-      const mentorData = req.body;
-      
-      mentorData.role = 'mentor';
-  
-      const mentor = new User({ ...mentorData });
-  
-      await mentor.save();
-  
-      return res.status(201).json(mentor);
-    } catch (error) {
-      next(error);
-    }
-  };
+    mentorData.role = "mentor";
+
+    const mentor = new User(mentorData);
+
+    await mentor.save();
+
+    return res.status(201).json({
+      message: "Mentor created successfully.",
+      mentor,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

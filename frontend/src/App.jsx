@@ -9,7 +9,6 @@ import MainLayout from './components/MainLayout';
 import Mentors from './pages/Mentors';
 import Coursesd from './pages/Coursesdash';
 import Certificates from './pages/Certificates';
-import Dashboard from '../src/pages/dashboard';
 import AddCourse from './pages/AddCourse';
 import Courses from './pages/Courses';
 import CoursesA from './pages/CoursesA';

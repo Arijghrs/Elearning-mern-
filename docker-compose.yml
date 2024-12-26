@@ -9,10 +9,10 @@ services:
     ports:
       - "5173:5173"
     volumes:
-      - "./frontend:/src"  # Mount the source code
-      - "/src/node_modules" # Avoid overwriting node_modules
+      - "./frontend:/src"  
+      - "/src/node_modules" 
     environment:
-      VITE_API_URL: "http://backend-app:3000/api"  # Use the backend service name instead of localhost
+      VITE_API_URL: "http://backend-app:3000/api"  
     networks:
       - app-network
 

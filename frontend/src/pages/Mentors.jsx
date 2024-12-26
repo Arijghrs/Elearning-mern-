@@ -3,8 +3,10 @@ import clock from "../assets/clock.png";
 import flag from "../assets/flag-line.png";
 import chevron from "../assets/chevron-bas.png";
 import { useEffect, useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 const Mentors = () => {
+  const navigate = useNavigate();
   const [mentors, setMentors] = useState([]);
   const [searchTerm, setSearchTerm] = useState(''); // State for search term
   const [dates, setDates] = useState([]);
@@ -60,13 +62,18 @@ const Mentors = () => {
     const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
     return new Date(dateString).toLocaleDateString('en-GB', options);
   };
+  const handleAddMentor = () => {
+    navigate('/addmentor');
+  };
 
   return (
     <div className="flex bg-neutral-50 ml-5 w-[1100px]">
       <div>
         <div className="flex items-center justify-between mt-8 ml-14 mr-14">
           <h1 className="font-semibold text-3xl mb-0 text-gray-700">Mentors</h1>
-          <button className="relative w-40 h-10 py-1 px-2 border border-black text-black font-semibold bg-white cursor-pointer shadow-purple-400 hover:transform hover:translate-x-[-2px] hover:translate-y-[2px] hover:shadow-purple-500">
+          <button 
+            onClick={handleAddMentor}
+            className="relative w-40 h-10 py-1 px-2 border border-black text-black font-semibold bg-white cursor-pointer shadow-purple-400 hover:transform hover:translate-x-[-2px] hover:translate-y-[2px] hover:shadow-purple-500">
             <span className="absolute inset-0 border border-black transform -translate-x-1 translate-y-1 bg-purp z-0"></span>
             <span className="absolute inset-0 border border-black bg-white z-10"></span>
             <span className="relative z-20  font-normal">Add mentor</span>

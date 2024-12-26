@@ -11,7 +11,7 @@ import certificateRouter from './routes/certificate.route.js'
 
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import { createOwner } from './controllers/owner.controller.js';
+
 
 
 dotenv.config();

@@ -1,17 +1,21 @@
 import React from 'react';
 import Popup from './Auth';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const { currentUser } = useSelector(state => state.user);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const buttonText = "Login";
   const buttonAction = "signIn";
 
   // Check if the current path is the profile page
   const isProfilePage = location.pathname === '/profile';
+  const handleNavigate = () => {
+    navigate('/profile');
+  };
 
   return (
     <nav className="bg-[#F5F4FF] w-full">
@@ -30,6 +34,7 @@ export default function Header() {
                   src={currentUser.avatar || 'https://via.placeholder.com/150'}
                   alt="User Avatar"
                   className="w-10 h-10 rounded-full "
+                  onClick={handleNavigate}
                 />
               ) : (
                 <Popup buttonText={buttonText} buttonAction={buttonAction} />

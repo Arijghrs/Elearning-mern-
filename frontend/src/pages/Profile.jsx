@@ -319,17 +319,7 @@ const Profile = () => {
 
 
 
-          <div className="flex flex-col items-center w-1/2 h-full pt-9">
-            <div className="font-caprasimo text-4xl font-normal mt-28 mb-7">Badges</div>
-            <div className="relative w-[350px] h-[350px] flex justify-center items-center rounded-full border border-black my-2">
-              <div className="relative w-[270px] h-[270px] flex justify-center items-center rounded-full border border-black bg-blueBadge">
-                <div className="font-caprasimo text-5xl text-white text-center">
-                  Level <br /> 16
-                </div>
-              </div>
-            </div>
-            <div className="font-caprasimo text-4xl mb-4 text-[#2C3439] py-auto">Rank:005</div>
-          </div>
+          
         </div>
       ))}
 

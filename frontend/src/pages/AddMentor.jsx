@@ -7,8 +7,8 @@ export default function AddMentor() {
   const navigate = useNavigate();
   const [mentorData, setMentorData] = useState({
     username: '',
+    email: '',
     password: '',
-    address: '',
     phoneNumber: '',
   });
 
@@ -23,33 +23,25 @@ export default function AddMentor() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Dispatch an action to indicate the start of mentor addition (if using Redux or context)
-      dispatch(addMentorStart());
-  
-      // Assuming `formData` holds the mentor's information collected from the form inputs
       const res = await fetch('/api/mentor/addMentor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(mentorData),
       });
   
       const data = await res.json();
   
-      if (data.success === false) {
-        dispatch(addMentorFailure(data.message));
+      if (!data.success) {
+        console.error('Error:', data.message);
         return;
       }
   
-      // Dispatch success action with the new mentor's data
-      dispatch(addMentorSuccess(data));
-  
-      // Navigate to the mentors list after successful addition
+      console.log('Mentor added successfully:', data);
       navigate('/mentors');
     } catch (error) {
-      // Handle error and dispatch failure action
-      dispatch(addMentorFailure(error.message));
+      console.error('Error:', error.message);
     }
   };
   
@@ -99,10 +91,10 @@ export default function AddMentor() {
                   <div>
                     <input
                       className="border broder-1 p-3 border-gray-400 shadow-shdInsetPurp h-11 w-[320px] mt-4 mb-4 text-sm font-monteserrat outline-none"
-                      type="text"
-                      name="address"
-                      placeholder="Address"
-                      value={mentorData.address}
+                      type="email"
+                      name="email"
+                      placeholder="email"
+                      value={mentorData.email}
                       onChange={handleChange}
                       required
                     />

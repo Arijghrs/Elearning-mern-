@@ -1,8 +1,9 @@
 import  { useState } from "react";
 import graduation from "../assets/graduation.png";
-import Course from "../components/Course";
+
 import Button from "../components/Button";
 import ExploreCourses from "../components/ExploreCourses";
+import Course from "../components/Course";
 
 const Courses = () => {
   const [search, setSearch] = useState("");
@@ -39,7 +40,7 @@ const Courses = () => {
         </div>
         <Button name={"Search"} color={"purp"} />
       </div>
-
+        
       <div className="container mx-auto px-4 py-6 relative mt-2">
         <div className="flex flex-col md:flex-row items-start justify-start md:pl-16 md:-ml-14">
           <h1 className="font-caprasimo text-2xl md:text-4xl leading-10 font-normal mt-4 md:mt-14">
@@ -48,7 +49,7 @@ const Courses = () => {
           <p className="md:absolute inset-y-0 right-0 mr-4 mt-4 md:mt-14 font-montserrat">Sort by: Default</p>
         </div>
         <div className="flex flex-wrap justify-center">
-          <Course />
+       <Course/>
         </div>
       </div>
       <div className="container mx-auto px-4 py-6 relative -mt-8">
@@ -58,7 +59,7 @@ const Courses = () => {
           </h1>
         </div>
         <div className="flex flex-wrap justify-center">
-          <ExploreCourses />
+        <ExploreCourses />
         </div>
       </div>
     </section>

@@ -1,7 +1,13 @@
-import About from "../components/About";
-import Summary from "../components/summary.jsx";
+
+import { useNavigate } from "react-router-dom";
+import Summary from "../components/summary";
 
 export default function Quiz() {
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate('/FillBlanksQuiz'); 
+  };
   return (
     <div className="flex flex-col">
       <div className="flex justify-between">
@@ -28,7 +34,8 @@ export default function Quiz() {
           <p className="text-darkBlue opacity-50 text-[16px] font-normal tracking-[.24px] my-5 text-start">
           Check your answers, once you submit your choice it cannot be edited! </p>
           <div className="flex items-center">
-            <button className="relative w-45 h-9 py-1 px-14 border border-black text-black font-semibold bg-white cursor-pointer shadow-purple-400 hover:transform hover:translate-x-[-2px] hover:translate-y-[2px] hover:shadow-purple-500">
+            <button onClick={handleNavigation}
+            className="relative w-45 h-9 py-1 px-14 border border-black text-black font-semibold bg-white cursor-pointer shadow-purple-400 hover:transform hover:translate-x-[-2px] hover:translate-y-[2px] hover:shadow-purple-500">
               <span className="absolute inset-0 border border-black transform -translate-x-1 translate-y-1 bg-purp z-0"></span>
               <span className="absolute inset-0 border border-black bg-white z-10"></span>
               <span className="relative z-20 text-black">Next</span>
@@ -40,7 +47,7 @@ export default function Quiz() {
         </div>
         <Summary />
       </div>
-      <About />
+      
     </div>
   );
 }

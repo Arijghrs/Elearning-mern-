@@ -27,6 +27,8 @@ import Payment from './pages/Payment';
 import MentorCourse from './pages/MentorCourse';
 import HomeScreen from './pages/HomeScreen';
 import AddMentor from './pages/AddMentor.jsx';
+import QuizReorder from './pages/QuizReorder.jsx';
+import Course from './components/Course.jsx';
 
 function App() {
   return (
@@ -62,7 +64,15 @@ function App() {
         path="/courses"
         element={
           <MainLayout>
-            <Courses />
+            <Courses/>
+          </MainLayout>
+        }
+      />
+       <Route
+        path="/course"
+        element={
+          <MainLayout>
+            <Course/>
           </MainLayout>
         }
       />
@@ -158,6 +168,18 @@ function App() {
           </MainLayout>
         }
       />
+        <Route
+        path="/QuizReorder"
+        element={
+          <MainLayout>
+            <QuizReorder/>
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/Course"
+        element={<Courses/> }
+      />
       {/*mentor and owner interfaces */}
       <Route
         path="/coursesdash"
@@ -174,7 +196,7 @@ function App() {
       
      <Route path="/dashboard" element={
           <Layout>
-           <Dashboard/>
+           <Users/>
           </Layout>
         }
       />

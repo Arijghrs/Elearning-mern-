@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import course from '../assets/Rectangle 976.png';
 import Rating from '../components/Rating';
 import credit from "../assets/Group 8888.png";
 import paypal from "../assets/Group 8889.png";
 import mastercard from "../assets/mastercard 1.png";
-
+import { useNavigate } from 'react-router-dom';
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState(''); // Default to empty string to hide inputs initially
-
+   const navigate = useNavigate();
   const handleCheckboxChange = (method) => {
     setPaymentMethod(method); // Update payment method based on checkbox
   };
-
+  const handleNavigation = () => {
+    navigate('/QuizStart'); // Replace '/payment' with your desired route
+  };
   return (
     <div className="flex justify-between mx-10 my-14">
       <div className="w-2/3 pr-10">
@@ -174,9 +176,12 @@ const Payment = () => {
           <p className="text-lg text-right">48.00 dt</p>
         </div>
 
-        <button className="w-[222px] h-[52px] bg-[#B8B5FF] text-[16px] font-montserrat mt-8">
-          Continue to payment
-        </button>
+        <button
+      className="w-[222px] h-[52px] bg-[#B8B5FF] text-[16px] font-montserrat mt-8"
+      onClick={handleNavigation}
+    >
+      Continue to payment
+    </button>
       </div>
     </div>
   );

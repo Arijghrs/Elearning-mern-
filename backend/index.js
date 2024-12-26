@@ -13,9 +13,9 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { createOwner } from './controllers/owner.controller.js';
 
+const app = express();
 
 dotenv.config();
-const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());

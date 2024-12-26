@@ -1,23 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import dashboardIcon from '../assets/element-4.svg';
 import usersIcon from '../assets/profile-2user.svg';
 import mentorsIcon from '../assets/teacher.svg';
 import coursesIcon from '../assets/document-copy.svg';
-import discussionIcon from '../assets/note.svg';
-import scheduleIcon from '../assets/calendar.svg';
 import certificatesIcon from '../assets/document-text.svg';
 import { deleteUserFailure, deleteUserSuccess, signOutUserStart } from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
 
 
 const menuItems = [
-  { href: '/dashboard', title: 'Dashboard', icon: dashboardIcon },
   { href: '/users', title: 'Users', icon: usersIcon },
   { href: '/mentors', title: 'Mentors', icon: mentorsIcon },
   { href: '/coursesdash', title: 'Courses', icon: coursesIcon },
-  { href: '/discussion', title: 'Discussion', icon: discussionIcon },
-  { href: '/schedule', title: 'Schedule', icon: scheduleIcon },
   { href: '/certificates', title: 'Certificates', icon: certificatesIcon },
   { href: '/profile', title: 'Account'},
 ];

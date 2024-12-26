@@ -12,7 +12,9 @@ const Summary = () => {
       <div className="flex  items-center  gap-7 my-2 ml-[30px]">
         <img className="w-10" src={play} alt="play"></img>
         <p className="text-blak text-[17px] ">
+        <a href="/CourseDiscussion" className="text-blue-500 ">
           01. Introduction
+          </a>
         </p>
         <span className="text-darkBlue opacity-50 text-[18px] font-montserrat font-semibold tracking-[.36px]  ml-auto">
           2 min
@@ -20,9 +22,12 @@ const Summary = () => {
       </div>
       <div className="flex items-center  gap-7 my-2 ml-[30px]">
       <img  className="w-10"  src={play} alt="play"></img>
-      <p className="text-blak text-[17px] ">
-      02. Chapter 1: Lorem ipsum
-        </p>
+      <p className="text-black text-[17px]">
+        <a href="/playlist" className="text-blue-500 ">
+        02. Chapter 1: Lorem ipsum
+            </a>
+           </p>
+
         <span className="text-darkBlue opacity-50 text-[18px] font-montserrat font-semibold tracking-[.36px] ml-auto">
           5 min
         </span>

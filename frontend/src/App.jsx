@@ -28,7 +28,7 @@ import HomeScreen from './pages/HomeScreen';
 import AddMentor from './pages/AddMentor.jsx';
 import QuizReorder from './pages/QuizReorder.jsx';
 import Course from './components/Course.jsx';
-
+import Playlist from './components/playlist.jsx';
 function App() {
   return (
 
@@ -114,6 +114,14 @@ function App() {
         element={
           <MainLayout>
             <Payment/>
+          </MainLayout>
+        }
+      /> 
+      <Route
+        path="/playlist"
+        element={
+          <MainLayout>
+            <Playlist/>
           </MainLayout>
         }
       />      
